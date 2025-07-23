@@ -21,4 +21,6 @@ COPY app.py .
 # Expose port
 EXPOSE 8080
 
-ENTRYPOINT FLASK_APP=app.py flask run --host=0.0.0.0 --port=8080
+
+# Run the app
+CMD ["python", "app.py"]
