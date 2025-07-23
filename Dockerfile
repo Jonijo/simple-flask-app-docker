@@ -1,16 +1,17 @@
 # Base image
 FROM ubuntu:latest
 
-# Avoid interactive prompts
-ENV DEBIAN_FRONTEND=noninteractive
-
 # Install Python and pip
-RUN apt-get update && \
-    apt-get install -y python3 python3-pip && \
-    apt-get clean
+RUN apt update && apt install -y python3 python3-pip python3-venv
 
-# Install flask
-RUN pip3 install flask
+# Create a virtual environment
+RUN python3 -m venv /opt/venv
+
+# Activate the venv and install Flask
+RUN /opt/venv/bin/pip install flask
+
+# Set environment so Python uses the venv
+ENV PATH="/opt/venv/bin:$PATH"
 
 # Set working directory
 WORKDIR /opt/source-code
