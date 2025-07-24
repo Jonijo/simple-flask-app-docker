@@ -7,7 +7,7 @@ def hello():
     return "Hello, World from Flask on Ubuntu!"
 
 @app.route('/hi')
-def hello():
+def hi():
     return "I am good, how about you?"
 
 if __name__ == '__main__':
