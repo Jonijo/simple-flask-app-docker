@@ -2,9 +2,14 @@ from flask import Flask
 
 app = Flask(__name__)
 
+
+color = os.environ.get("BG_COLOR", "#ffffff")  # default to white
+
 @app.route('/')
 def hello():
-    return "Hello, World from Flask on Ubuntu!"
+
+    return render_template("index.html", bg_color=color) # Flask finds the templates folder automatically
+
 
 @app.route('/hi')
 def hi():
